@@ -1,8 +1,8 @@
 # Landing Page Project
 
 ## Table of Contents
-### development
-### extra features
+- [Development](###development)
+- [extra features](###extra-features)
 
 
 #### development
