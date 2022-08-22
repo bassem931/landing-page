@@ -58,7 +58,7 @@ main {
 
 section {
     position: relative;
-    min-height: 80vh;
+    min-height: 40vh;
 }
 
 
@@ -69,14 +69,13 @@ section {
     padding-left: 0;
     margin: 0;
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
     
 }
 
 .navbar__menu li {
     display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .navbar__menu .menu__link {
@@ -119,6 +118,7 @@ section {
 .landing__container {
     padding: 1em;
     text-align: left;
+    max-width: 50vw;
 }
 
 @media only screen and (min-width: 35em){
@@ -133,6 +133,7 @@ section:nth-of-type(even) .landing__container {
     margin-right: 0;
     margin-left: auto;
     text-align: right; 
+
     
 }
 
