@@ -6,7 +6,6 @@
 
 
 #### development
-[(Back to top)](#table-of-contents)
 the Web page was downloaded as the plain project and then edited.  
 All the basic requirements were done and were as follows  
 1.link Js file  
@@ -30,7 +29,6 @@ smooth scroll was implemented to give a satisfying transition when clicking sect
 active state class was implemented accroding to section in viewport to show rotating circles around it
 
 #### extra features
-[(Back to top)](#table-of-contents)
 implemented features:  
 collapsible sections with rotating arrow image to sync with the change  
 add two images to change some of the page content  
