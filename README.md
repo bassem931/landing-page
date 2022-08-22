@@ -1,11 +1,11 @@
 # Landing Page Project
 
 ## Table of Contents
-1.development
-2.extra features
-
-
 ###development
+###extra features
+
+
+####development
 the Web page was downloaded as the plain project and then edited.
 All the basic requirements were done and were as follows
 1.link Js file 
