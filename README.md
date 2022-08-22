@@ -1,13 +1,40 @@
 # Landing Page Project
 
 ## Table of Contents
+1.development
+2.extra features
 
-* [Instructions](#instructions)
 
-## Instructions
+###development
+the Web page was downloaded as the plain project and then edited.
+All the basic requirements were done and were as follows
+1.link Js file 
+js file was linked successfully at the end of the body.several positions were tested
+like at the head but the performance was worse.defer and async were tested but they 
+gave worse performance
 
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+2.created section
+a create section function were implemented to create a section identical to the sections implemented
 
-To get started, open `js/app.js` and start building out the app's functionality
+3.build navbar
+navbar function was implemented to build the bar with sections links
 
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+4.distinguish the section in view
+the section in viewport is highlighted by having a border and highlight section link in navbar
+
+5.scroll to sections
+smooth scroll was implemented to give a satisfying transition when clicking section links
+
+9.active state
+active state class was implemented accroding to section in viewport to show rotating circles around it
+
+#### extra features
+implemented features:
+collapsible sections with rotating arrow image to sync with the change
+add two images to change some of the page content
+show navbar when hovering with mouse at the screen top
+button to scroll to the top of the page
+hide navigation bar when not scrolling after 5 seconds
+
+
+
