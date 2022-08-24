@@ -49,7 +49,6 @@ function navbarbuild(){
     liSections.forEach((liSection,i) => {
         //create link for section
         const secLink = document.createElement("a");
-        secLink.href = "#section" + i+1;
         //add text to link
         secLink.appendChild(document.createTextNode("Section " + (i+1)));
         //set class to menulink to apply the css code done for the links
@@ -257,6 +256,27 @@ function createSection(Sectionnum){
         });
     }
 
+function addcontent(){
+    const picfrag = document.createDocumentFragment();
+//add first pic
+const pic = document.createElement("img");
+pic.src = "https://t3.ftcdn.net/jpg/02/91/52/22/360_F_291522205_XkrmS421FjSGTMRdTrqFZPxDY19VxpmL.jpg";
+pic.alt = "thank you";
+//add second pic
+const pic2 = document.createElement("img");
+pic2.src = "https://media.istockphoto.com/vectors/well-done-paper-banner-vector-id914386120?k=20&m=914386120&s=612x612&w=0&h=Dc6oVt92D8ktFlTIgEWf2PGR26RsUQlvFcvhSLa8ifM=";
+pic.alt = "good job";
+//set widths to 50%
+pic.style.width = "50%";
+pic2.style.width = "50%";
+//edit pic height to be same as first
+pic.style.height = "30%";
+pic2.style.height = "30%";
+//add container then frag to document
+picfrag.append(pic,pic2);
+document.querySelector("main").appendChild(picfrag);
+}
+
 /**
  * End Main Functions
  * Begin Events
@@ -282,24 +302,7 @@ topbutton();
 
 //change content (add 2 images)
 //create fragment
-const picfrag = document.createDocumentFragment();
-//add first pic
-const pic = document.createElement("img");
-pic.src = "https://t3.ftcdn.net/jpg/02/91/52/22/360_F_291522205_XkrmS421FjSGTMRdTrqFZPxDY19VxpmL.jpg";
-pic.alt = "thank you";
-//add second pic
-const pic2 = document.createElement("img");
-pic2.src = "https://media.istockphoto.com/vectors/well-done-paper-banner-vector-id914386120?k=20&m=914386120&s=612x612&w=0&h=Dc6oVt92D8ktFlTIgEWf2PGR26RsUQlvFcvhSLa8ifM=";
-pic.alt = "good job";
-//set widths to 50%
-pic.style.width = "50%";
-pic2.style.width = "50%";
-//edit pic height to be same as first
-pic.style.height = "30%";
-pic2.style.height = "30%";
-//add container then frag to document
-picfrag.append(pic,pic2);
-document.querySelector("main").appendChild(picfrag);
+addcontent();
 
 //make sections collapsible
 makeCollapse();
