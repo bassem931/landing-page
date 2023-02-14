@@ -11,12 +11,12 @@
 
 /* ---- Base Rules ---- */
 body {
-    background: rgb(136,203,171);
-    background: linear-gradient(0deg, rgba(136,203,171,1) 0%, rgba(0,13,60,1) 100%);
+    background: rgb(136, 203, 171);
+    background: linear-gradient(0deg, rgba(136, 203, 171, 1) 0%, rgba(0, 13, 60, 1) 100%);
     margin: 0;
     font-family: 'Merriweather', serif;
     color: #fff;
-    
+
 }
 
 
@@ -27,7 +27,7 @@ h1 {
     margin: 2em 1rem;
 }
 
-@media only screen and (min-width: 35em){
+@media only screen and (min-width: 35em) {
     h1 {
         font-size: 7em;
         margin: 2em 4rem 1em;
@@ -71,7 +71,7 @@ section {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    
+
 }
 
 .navbar__menu li {
@@ -86,16 +86,16 @@ section {
     color: #000;
 }
 
-@media only screen and (min-width:600px ) {
-.navbar__menu .menu__link:hover {
-    background: rgba(134, 57, 57, 0.673);
-    color: #fff;
-    cursor: pointer;
-    transition: ease 0.3s all;
-}
+@media only screen and (min-width:600px) {
+    .navbar__menu .menu__link:hover {
+        background: rgba(134, 57, 57, 0.673);
+        color: #fff;
+        cursor: pointer;
+        transition: ease 0.3s all;
+    }
 }
 
-.navbar__menu .menu__link:active{
+.navbar__menu .menu__link:active {
     background: #000;
     color: #fff;
     transition: ease 0.3s all;
@@ -117,7 +117,7 @@ section {
     color: #fff;
 }
 
-.page__footer p{
+.page__footer p {
     color: #fff;
 }
 
@@ -130,20 +130,20 @@ section {
     max-width: 50vw;
 }
 
-@media only screen and (min-width: 35em){
+@media only screen and (min-width: 35em) {
     .landing__container {
         max-width: 50em;
         padding: 4em;
-        
+
     }
 }
 
 section:nth-of-type(even) .landing__container {
     margin-right: 0;
     margin-left: auto;
-    text-align: right; 
+    text-align: right;
 
-    
+
 }
 
 /* Background Circles */
@@ -156,32 +156,32 @@ section:nth-of-type(odd) .landing__container::before {
     z-index: -5;
     width: 20vh;
     height: 20vh;
-    border-radius: 50%;
+    border-radius: 40%;
     opacity: 0;
     transition: ease 0.5s all;
 }
 
 section:nth-of-type(even) .landing__container::before {
     content: '';
-    background: rgb(255,255,255);
-    background: linear-gradient(0deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.2) 100%);
+    background: rgb(255, 255, 255);
+    background: linear-gradient(0deg, rgba(255, 255, 255, .1) 0%, rgba(255, 255, 255, .2) 100%);
     position: absolute;
     top: 3em;
     right: 3em;
     z-index: -5;
     width: 10vh;
     height: 10vh;
-    border-radius: 50%;
+    border-radius: 40%;
     opacity: 0;
     transition: ease 0.5s all;
 }
 
-section:nth-of-type(3n) .landing__container::after {
+section:nth-of-type(odd) .landing__container::after {
     content: '';
-    background: rgb(255,255,255);
-    background: linear-gradient(0deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.2) 100%);
+    background: rgb(255, 255, 255);
+    background: linear-gradient(0deg, rgba(255, 255, 255, .1) 0%, rgba(255, 255, 255, .2) 100%);
     position: absolute;
-    right: 0;
+    right: 35vw;
     bottom: 0;
     z-index: -5;
     width: 10vh;
@@ -191,12 +191,12 @@ section:nth-of-type(3n) .landing__container::after {
     transition: ease 0.5s all;
 }
 
-section:nth-of-type(3n + 1) .landing__container::after {
+section:nth-of-type(even) .landing__container::after {
     content: '';
-    background: rgb(255,255,255);
-    background: linear-gradient(0deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.2) 100%);
+    background: rgb(255, 255, 255);
+    background: linear-gradient(0deg, rgba(255, 255, 255, .1) 0%, rgba(255, 255, 255, .2) 100%);
     position: absolute;
-    right: 20vw;
+    right: 50vw;
     bottom: -5em;
     z-index: -5;
     width: 15vh;
@@ -210,7 +210,6 @@ section:nth-of-type(3n + 1) .landing__container::after {
 
 /* ---- Theme State Rules ---- */
 /* Section Active Styles */
-/* Note: your-active-class class is applied through javascript. You should update the class here and in the index.html to what you set in your javascript file.  */
 section.active {
     background: rgb(0, 0, 0);
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
@@ -228,14 +227,11 @@ section.active .landing__container::after {
 
 /* Section Active Styles Keyframe Animations */
 @keyframes rotate {
-	from {
-		transform: rotate(0deg)
-		           translate(-1em)
-		           rotate(0deg);
-	}
-	to {
-		transform: rotate(360deg)
-		           translate(-1em) 
-		           rotate(-360deg);
-	}
+    from {
+        transform: rotate(0deg) translate(-1em) rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg) translate(-1em) rotate(-360deg);
+    }
 }

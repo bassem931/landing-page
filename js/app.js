@@ -40,17 +40,17 @@ function isInViewport(element) {
 }
 
 //helper to build the navbar
-function navbarbuild(){
+function navbarbuild() {
     const navbarList = document.getElementById("navbar__list");
     //create nodelist with sections
     const liSections = document.querySelectorAll("[data-nav]");
     const ulFrag = document.createDocumentFragment();
     //iterate sections to place li in bar
-    liSections.forEach((liSection,i) => {
+    liSections.forEach((liSection, i) => {
         //create link for section
         const secLink = document.createElement("a");
         //add text to link
-        secLink.appendChild(document.createTextNode("Section " + (i+1)));
+        secLink.appendChild(document.createTextNode("Section " + (i + 1)));
         //set class to menulink to apply the css code done for the links
         secLink.className = "menu__link";
         //create li and add link to it
@@ -59,22 +59,22 @@ function navbarbuild(){
         linkLi.appendChild(secLink);
         //add li to frag
         ulFrag.appendChild(linkLi);
-           
-      })
-      //empty list to avoid repetition
-      navbarList.innerHTML =""; 
-      navbarList.appendChild(ulFrag);
+
+    })
+    //empty list to avoid repetition
+    navbarList.innerHTML = "";
+    navbarList.appendChild(ulFrag);
 }
 
 //listener for keeping navbar when mouse at top of screen
-function mouseForNav(){
-    const navBar= document.querySelector(".page__header");
-    document.addEventListener("mousemove",e =>{
-        if(e.clientY<80 && e.clientY>0){
+function mouseForNav() {
+    const navBar = document.querySelector(".page__header");
+    document.addEventListener("mousemove", e => {
+        if (e.clientY < 80 && e.clientY > 0) {
             navBar.style.visibility = "visible";
             navBar.style.opacity = "1";
         }
-        else{
+        else {
             navBar.style.visibility = "hidden";
             navBar.style.opacity = "0";
             navBar.style.transition = "visibility 0.5s ease,opacity 0.5s ease";
@@ -88,7 +88,7 @@ function mouseForNav(){
  * 
 */
 //create new sections and add to navbar
-function createSection(Sectionnum){
+function createSection(Sectionnum) {
     //create document frag
     const secFrag = document.createDocumentFragment();
     //create section element
@@ -120,161 +120,163 @@ function createSection(Sectionnum){
     document.getElementsByTagName("main")[0].appendChild(secFrag);
     //call navbarbuild to add section to the bar
     navbarbuild();
-    }
-    //actions for scroll event function
-    function ScrollListens(){
-        //get sections
-        const liSections = document.querySelectorAll("[data-nav]");
-        //iterate sections
-        liSections.forEach((liSection,i) => {
-            //get link
-            const allLinks = document.querySelectorAll(".menu__link")[i];
-            //event listener for scroll actions
-            document.addEventListener("scroll",() =>{
-                //get navbar element and set to visible and opaque
-                const navBar= document.querySelector(".page__header");
-                navBar.style.visibility = "visible";
-                navBar.style.opacity = "1";
-                
-                //hide navbar after 5 inactive seconds
-                setTimeout(() =>{
-                        navBar.style.visibility = "hidden";
-                        navBar.style.opacity = "0";
-                        navBar.style.transition = "visibility 0.5s ease,opacity 0.5s ease";
-                },5000);
-                
-                //highlight active section in navbar
-                if(isInViewport(liSection)){
+}
+//actions for scroll event function
+function ScrollListens() {
+    //get sections
+    const liSections = document.querySelectorAll("[data-nav]");
+    //iterate sections
+    liSections.forEach((liSection, i) => {
+        //get link
+        const allLinks = document.querySelectorAll(".menu__link")[i];
+        //event listener for scroll actions
+        document.addEventListener("scroll", () => {
+            //get navbar element and set to visible and opaque
+            const navBar = document.querySelector(".page__header");
+            navBar.style.visibility = "visible";
+            navBar.style.opacity = "1";
+
+            //hide navbar after 5 inactive seconds
+            setTimeout(() => {
+                navBar.style.visibility = "hidden";
+                navBar.style.opacity = "0";
+                navBar.style.transition = "visibility 0.5s ease,opacity 0.5s ease";
+            }, 5000);
+
+            //highlight active section in navbar
+            if (isInViewport(liSection)) {
                 liSection.classList.add("active");
                 liSection.firstElementChild.style.border = "5px solid black";
                 allLinks.style.backgroundColor = "black";
                 allLinks.style.color = "white";
-                }
-                else if (liSection.classList.contains("active")){
-                  liSection.classList.remove("active");
-                  liSection.firstElementChild.style.border = "";
-                  allLinks.style.backgroundColor = "";
-                  allLinks.style.color = "";
-                }
-              })
-    
+            }
+            else if (liSection.classList.contains("active")) {
+                liSection.classList.remove("active");
+                liSection.firstElementChild.style.border = "";
+                allLinks.style.backgroundColor = "";
+                allLinks.style.color = "";
+            }
         })
-    
-    }
-    //enable smooth scrolling
-    function smoothscroll(){
-        const allLinks = document.querySelectorAll(".menu__link");
-        //iterate links 
-        allLinks.forEach((link,i) => {
-            //listener for smooth scrolling after clicking section
-            link.addEventListener("click",ev =>{
+
+    })
+
+}
+//enable smooth scrolling
+function smoothscroll() {
+    const allLinks = document.querySelectorAll(".menu__link");
+    //iterate links 
+    allLinks.forEach((link, i) => {
+        //listener for smooth scrolling after clicking section
+        link.addEventListener("click", ev => {
             //prevent default anchor actio
             ev.preventDefault();
             const section = document.querySelectorAll("[data-nav]")[i];
             //element to scroll to and set behavior to smooth
-            section.scrollIntoView({behavior: "smooth"}); 
-            })
-        });
-    }
-    //button to scroll to top
-    function topbutton(){
-        //button to go up again
-        const topButton = document.createElement("button");
-        topButton.textContent = "Go back to Top";
-        document.querySelector(".page__footer").appendChild(topButton);
-        //listner for button to smooth scroll back
-        topButton.addEventListener("click",ev =>{
-            ev.preventDefault();
-            document.querySelector(".main__hero").scrollIntoView({behavior: "smooth"}); 
-        });
-    }
-    //make sections collapsible
-    function makeCollapse(){
-    
-        const sections = document.querySelectorAll("[data-nav]");
-    
-        sections.forEach((section,i) => {
-            //get div container
-            let sectionCont = section.firstElementChild;
-            //get h2 header
-            let sectionhead = sectionCont.firstElementChild;
-    
-            //add arrow image to headings
-            const arrowImg = document.createElement("img");
-            arrowImg.src = "https://cdn-icons-png.flaticon.com/512/60/60625.png";
-            arrowImg.alt = "arrow";
-            //set arrow postion for even sections
-            if((i+1) %2===0){
-                arrowImg.setAttribute("style",`
+            section.scrollIntoView({ behavior: "smooth" });
+        })
+    });
+}
+//button to scroll to top
+function topbutton() {
+    //button to go up again
+    const topButton = document.createElement("button");
+    topButton.textContent = "Go back to Top";
+    document.querySelector(".page__footer").appendChild(topButton);
+    //listner for button to smooth scroll back
+    topButton.addEventListener("click", ev => {
+        ev.preventDefault();
+        document.querySelector(".main__hero").scrollIntoView({ behavior: "smooth" });
+    });
+}
+//make sections collapsible
+function makeCollapse() {
+
+    const sections = document.querySelectorAll("[data-nav]");
+
+    sections.forEach((section, i) => {
+        //get div container
+        let sectionCont = section.firstElementChild;
+        //get h2 header
+        let sectionhead = sectionCont.firstElementChild;
+
+        //add arrow image to headings
+        const arrowImg = document.createElement("img");
+        arrowImg.src = "https://cdn-icons-png.flaticon.com/512/60/60625.png";
+        arrowImg.alt = "arrow";
+        //set arrow postion for even sections
+        if ((i + 1) % 2 === 0) {
+            arrowImg.setAttribute("style", `
                 background-color: white;
                 position: relative;
                 z-index: -5; 
                 width: 8vh; 
                 height: 8vh;
                 right: 84%;
-                `)}
-            //set arrow position for odd sections
-            else if((i+1) %2===1){
-                arrowImg.setAttribute("style",`
+                `)
+        }
+        //set arrow position for odd sections
+        else if ((i + 1) % 2 === 1) {
+            arrowImg.setAttribute("style", `
                 background-color: white;
                 position: relative;
                 z-index: -5; 
                 width: 8vh; 
                 height: 8vh;
-                left: 55%;
-                `)}
-    
-            sectionhead.appendChild(arrowImg);
-            
-            //get 2 p elements in div
-            const firstp = sectionhead.nextElementSibling;
-            const secondp = firstp.nextElementSibling;
-            
-    
-            sectionhead.setAttribute("style","cursor: pointer; border: none;outline:none");
-            //hide p initially
-            firstp.setAttribute("style","display: none; overflow: hidden;");
-            secondp.setAttribute("style","display: none; overflow: hidden;");
-            
-            //listener to toggle collapse
-            sectionhead.addEventListener("click", () => {
+                left: 48%;
+                `)
+        }
+
+        sectionhead.appendChild(arrowImg);
+
+        //get 2 p elements in div
+        const firstp = sectionhead.nextElementSibling;
+        const secondp = firstp.nextElementSibling;
+
+
+        sectionhead.setAttribute("style", "cursor: pointer; border: none;outline:none");
+        //hide p initially
+        firstp.setAttribute("style", "display: none; overflow: hidden;");
+        secondp.setAttribute("style", "display: none; overflow: hidden;");
+
+        //listener to toggle collapse
+        sectionhead.addEventListener("click", () => {
             //if both visible hide else show them and rotate image accordingly
             if (firstp.style.display === "block" && secondp.style.display === "block") {
-                firstp.setAttribute("style","display: none; overflow: hidden;");
-                secondp.setAttribute("style","display: none; overflow: hidden;");
+                firstp.setAttribute("style", "display: none; overflow: hidden;");
+                secondp.setAttribute("style", "display: none; overflow: hidden;");
                 arrowImg.style.rotate = "0deg"
                 section.style.minHeight = "40vh";
             } else {
-                firstp.setAttribute("style","display: block; overflow: visible;");
-                secondp.setAttribute("style","display: block; overflow: visible;");
+                firstp.setAttribute("style", "display: block; overflow: visible;");
+                secondp.setAttribute("style", "display: block; overflow: visible;");
                 arrowImg.style.rotate = "180deg"
                 section.style.minHeight = "80vh";
             }
         });
-        
-    
-        });
-    }
 
-function addcontent(){
+
+    });
+}
+
+function addcontent() {
     const picfrag = document.createDocumentFragment();
-//add first pic
-const pic = document.createElement("img");
-pic.src = "https://t3.ftcdn.net/jpg/02/91/52/22/360_F_291522205_XkrmS421FjSGTMRdTrqFZPxDY19VxpmL.jpg";
-pic.alt = "thank you";
-//add second pic
-const pic2 = document.createElement("img");
-pic2.src = "https://media.istockphoto.com/vectors/well-done-paper-banner-vector-id914386120?k=20&m=914386120&s=612x612&w=0&h=Dc6oVt92D8ktFlTIgEWf2PGR26RsUQlvFcvhSLa8ifM=";
-pic.alt = "good job";
-//set widths to 50%
-pic.style.width = "50%";
-pic2.style.width = "50%";
-//edit pic height to be same as first
-pic.style.height = "30%";
-pic2.style.height = "30%";
-//add container then frag to document
-picfrag.append(pic,pic2);
-document.querySelector("main").appendChild(picfrag);
+    //add first pic
+    const pic = document.createElement("img");
+    pic.src = "https://t3.ftcdn.net/jpg/02/91/52/22/360_F_291522205_XkrmS421FjSGTMRdTrqFZPxDY19VxpmL.jpg";
+    pic.alt = "thank you";
+    //add second pic
+    const pic2 = document.createElement("img");
+    pic2.src = "https://media.istockphoto.com/vectors/well-done-paper-banner-vector-id914386120?k=20&m=914386120&s=612x612&w=0&h=Dc6oVt92D8ktFlTIgEWf2PGR26RsUQlvFcvhSLa8ifM=";
+    pic.alt = "good job";
+    //set widths to 50%
+    pic.style.width = "50%";
+    pic2.style.width = "50%";
+    //edit pic height to be same as first
+    pic.style.height = "30%";
+    pic2.style.height = "30%";
+    //add container then frag to document
+    picfrag.append(pic, pic2);
+    document.querySelector("main").appendChild(picfrag);
 }
 
 /**
